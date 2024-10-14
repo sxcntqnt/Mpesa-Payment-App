@@ -4,3 +4,4 @@ mpesa/__pycache__/
 mpesa/migrations/__pycache__/
 PAYMENT_SYSTEM/__pycache__/
 mpesa/migrations/
+mpesa/migrations/000*.py
