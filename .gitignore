@@ -1,4 +1,4 @@
-db.sqlite
+db.sqlite3
 obonyos/
 mpesa/__pycache__/
 mpesa/migrations/__pycache__/

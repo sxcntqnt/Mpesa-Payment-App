@@ -47,7 +47,6 @@ class IdentifierType(models.Model):
         return str(self.name)
 
 class Transaction(models.Model):
-<<<<<<< HEAD
     transaction_type = models.ForeignKey(
         'TransactionType',
         related_name='type',
@@ -145,11 +144,11 @@ class TransactionResponse(models.Model):
 
 
 class Registration(models.Model):
-        company_code = models.ForeignKey(
+    company_code = models.ForeignKey(
         CompanyShortCodeOrNumber,
         related_name='company_short_code_or_number',  # Changed to a more descriptive name
         null=True,
-        on_delete=models.SET_NULL  # You can choose the appropriate option for your use case
+        on_delete=models.SET_NULL  # Choose the appropriate option for your use case
     )
     company_name = models.ForeignKey(
         InitiatorName,
