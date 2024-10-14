@@ -1,0 +1,6 @@
+db.sqlite
+obonyos/
+mpesa/__pycache__/
+mpesa/migrations/__pycache__/
+PAYMENT_SYSTEM/__pycache__/
+mpesa/migrations/

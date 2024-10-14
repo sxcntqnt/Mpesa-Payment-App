@@ -5,8 +5,8 @@ from rest_framework import status, generics
 from rest_framework.decorators import *
 from rest_framework.renderers import *
 from rest_framework.response import Response
-from .models import *
-from .serializers import *
+from . import models
+from . import serializers
 from rest_framework.mixins import DestroyModelMixin, UpdateModelMixin
 from rest_framework.views import APIView
 from rest_framework.generics import (
@@ -18,8 +18,8 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView
 )
 from django.http import Http404
-from .utils import *
-from .tasks import *
+from . import utils
+from . import tasks
 
 class CreateBToCTransaction(APIView):
 
@@ -476,15 +476,15 @@ class CreateInitiatorType(APIView):
 
 
 class OccasionListView(generics.ListAPIView):
-    serializer_class = OccassionSerializer
-    queryset = Occassion.objects.all()
+    serializer_class = serializers.OccassionSerializer
+    queryset = serializers.Occassion.objects.all()
 
     def list(self, request):
         try:
-            occassions = Occassion.objects.all()
+            occassions = serializers.Occassion.objects.all()
         except:
             raise Http404
-        serializer = OccasionSerializer(
+        serializer = serializers.OccasionSerializer(
             occassions, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -522,8 +522,8 @@ class OccasionDetailAPIView(DestroyModelMixin,
 
 
 class MpesaCommandIdListView(generics.ListAPIView):
-    serializer_class = MpesaCommandIdSerializer
-    queryset = MpesaCommandId.objects.all()
+    serializer_class = serializers.MpesaCommandIdSerializer
+    queryset = serializers.MpesaCommandId.objects.all()
 
     def list(self, request):
         try:
@@ -568,15 +568,15 @@ class MpesaCommandIdDetailAPIView(DestroyModelMixin,
 
 
 class MpesaShortCodeOrNumberListView(generics.ListAPIView):
-    serializer_class = CompanyShortCodeOrNumberSerializer
-    queryset = CompanyShortCodeOrNumber.objects.all()
+    serializer_class = serializers.CompanyShortCodeOrNumberSerializer
+    queryset = serializers.CompanyShortCodeOrNumber.objects.all()
 
     def list(self, request):
         try:
-            company_codes_or_nos = CompanyShortCodeOrNumber.objects.all()
+            company_codes_or_nos = serializers.CompanyShortCodeOrNumber.objects.all()
         except:
             raise Http404
-        serializer = CompanyShortCodeOrNumberSerializer(
+        serializer = serializers.CompanyShortCodeOrNumberSerializer(
             company_codes_or_nos, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -616,15 +616,15 @@ class MpesaShortCodeOrNumberDetailAPIView(DestroyModelMixin,
 
 
 class InitiatorNameListView(generics.ListAPIView):
-    serializer_class = InitiatorNameSerializer
-    queryset = InitiatorName.objects.all()
+    serializer_class = serializers.InitiatorNameSerializer
+    queryset = serializers.InitiatorName.objects.all()
 
     def list(self, request):
         try:
-            initiator_names = InitiatorName.objects.all()
+            initiator_names = serializers.InitiatorName.objects.all()
         except:
             raise Http404
-        serializer = InitiatorNameSerializer(
+        serializer = serializers.InitiatorNameSerializer(
             initiator_names, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -663,15 +663,15 @@ class InitiatorNameDetailAPIView(DestroyModelMixin,
 
 
 class TransactionTypeListView(generics.ListAPIView):
-    serializer_class = TransactionTypeSerializer
-    queryset = TransactionType.objects.all()
+    serializer_class = serializers.TransactionTypeSerializer
+    queryset = serializers.TransactionType.objects.all()
 
     def list(self, request):
         try:
-            transaction_types = TransactionType.objects.all()
+            transaction_types = serializers.TransactionType.objects.all()
         except:
             raise Http404
-        serializer = TransactionTypeSerializer(
+        serializer = serializers.TransactionTypeSerializer(
             transaction_types, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -709,15 +709,15 @@ class TransactionTypeDetailAPIView(DestroyModelMixin,
 
 
 class IdentifierTypeListView(generics.ListAPIView):
-    serializer_class = IdentifierTypeSerializer
-    queryset = IdentifierType.objects.all()
+    serializer_class = serializers.IdentifierTypeSerializer
+    queryset = serializers.IdentifierType.objects.all()
 
     def list(self, request):
         try:
-            identifier_types = IdentifierType.objects.all()
+            identifier_types = serializers.IdentifierType.objects.all()
         except:
             raise Http404
-        serializer = IdentifierTypeSerializer(
+        serializer = serializers.IdentifierTypeSerializer(
             identifier_types, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -755,15 +755,15 @@ class IdentifierTypeDetailAPIView(DestroyModelMixin,
 
 
 class TransactionListView(generics.ListAPIView):
-    serializer_class = TransactionSerializer
-    queryset = Transaction.objects.all()
+    serializer_class = serializers.TransactionSerializer
+    queryset = serializers.Transaction.objects.all()
 
     def list(self, request):
         try:
-            transactions = Transaction.objects.all()
+            transactions = serializers.Transaction.objects.all()
         except:
             raise Http404
-        serializer = TransactionSerializer(
+        serializer = serializers.TransactionSerializer(
             transactions, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -780,15 +780,15 @@ class TransactionDetailAPIView(generics.RetrieveAPIView):
 
 
 class TransactionResponseListView(generics.ListAPIView):
-    serializer_class = TransactionResponseSerializer
-    queryset = TransactionResponse.objects.all()
+    serializer_class = serializers.TransactionResponseSerializer
+    queryset = serializers.TransactionResponse.objects.all()
 
     def list(self, request):
         try:
-            transaction_responses = TransactionResponse.objects.all()
+            transaction_responses = serializers.TransactionResponse.objects.all()
         except:
             raise Http404
-        serializer = TransactionResponseSerializer(
+        serializer = serializers.TransactionResponseSerializer(
             transaction_responses, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -805,15 +805,15 @@ class TransactionResponseDetailAPIView(generics.RetrieveAPIView):
 
 
 class RegistrationListView(generics.ListAPIView):
-    serializer_class = RegistrationSerializer
-    queryset = Registration.objects.all()
+    serializer_class = serializers.RegistrationSerializer
+    queryset = serializers.Registration.objects.all()
 
     def list(self, request):
         try:
-            registrations = Registration.objects.all()
+            registrations = serializers.Registration.objects.all()
         except:
             raise Http404
-        serializer = RegistrationSerializer(
+        serializer = serializers.RegistrationSerializer(
             registrations, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

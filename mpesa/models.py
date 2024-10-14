@@ -47,6 +47,7 @@ class IdentifierType(models.Model):
         return str(self.name)
 
 class Transaction(models.Model):
+<<<<<<< HEAD
     transaction_type = models.ForeignKey(
         'TransactionType',
         related_name='type',
@@ -98,6 +99,7 @@ class Transaction(models.Model):
         null=True,
         on_delete=models.SET_NULL  # Add the on_delete argument
     )
+
     created = models.DateTimeField(auto_now_add=True)
     remarks = models.CharField(max_length=200, null=True)
 
@@ -110,7 +112,8 @@ class TransactionResponse(models.Model):
         max_length=200, null=True, blank=True
     )
     response_description = models.CharField(
-        max_length=200, null=True, blank=True
+
+    max_length=200, null=True, blank=True
     )
     conversation_id = models.CharField(
         max_length=200, null=True, blank=True
@@ -142,7 +145,7 @@ class TransactionResponse(models.Model):
 
 
 class Registration(models.Model):
-    company_code = models.ForeignKey(
+        company_code = models.ForeignKey(
         CompanyShortCodeOrNumber,
         related_name='company_short_code_or_number',  # Changed to a more descriptive name
         null=True,
