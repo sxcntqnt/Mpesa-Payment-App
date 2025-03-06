@@ -16,8 +16,10 @@ import os
 import datetime
 from kombu import Exchange, Queue
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from PAYMENT_SYSTEM.env import BASE_DIR ,env
+
+env.read_env(os.path.join(BASE_DIR, '.env'))
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
@@ -25,10 +27,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b&$y0hve_job1g3&cgt4gxp=sxwu9eu@jy)52s92hj%zt#=81m'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DJANGO_DEBUG', default=True)
 
 ALLOWED_HOSTS = ['192.168.100.111','192.168.100.150']
 
@@ -57,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'PAYMENT_SYSTEM.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -75,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'PAYMENT_SYSTEM.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
@@ -193,3 +195,6 @@ CACHES = {
         }
     }
 }
+
+from config.settings.celery import *
+from config.settings.mpesa import *
