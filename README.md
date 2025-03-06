@@ -86,6 +86,7 @@ SHORTCODE='your-shortcode'  # Typically N/A in the sandbox
 Run the following command to create the necessary database tables:
 ```
 python manage.py migrate
+python manage.py makemigrations
 ```
 6. Create a Superuser
 ##To access the Django admin panel, you can create a superuser:
@@ -93,15 +94,14 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 7. Start the Development Server
-##
 ```
 python manage.py runserver
 ```
 
 8. Usage
 
-##Once the server is running, you can interact with the Mpesa API through the available endpoints. These endpoints are exposed as RESTful services.
-###Theycan be used to initiate and receive payment requests through the Callback URL
+## Once the server is running, you can interact with the Mpesa API through the available endpoints. These endpoints are exposed as RESTful services.
+### Theycan be used to initiate and receive payment requests through the Callback URL
 
 For test environments, a static URL is required to receive transaction responses from Mpesa. You will need to set up a callback URL in the Mpesa sandbox portal and associate it with the respective transactions. The URL should be publicly accessible, or you can use tools like ngrok to expose a local server for testing.
 ```
@@ -113,6 +113,6 @@ curl -X POST http://127.0.0.1:8000/api/payment \
 
 9. License
 
-#This project is licensed under the MIT License.
+# This project is licensed under the MIT License.
 
-##Feel free to contribute, submit issues, and fork this repository for further enhancements!
+## Feel free to contribute, submit issues, and fork this repository for further enhancements!
