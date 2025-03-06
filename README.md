@@ -1,4 +1,4 @@
-# Mpesa-Payment-App
+## Mpesa-Payment-App
 
 This is a RESTful payment application built with the Python Django framework, integrating the Mpesa REST APIs. The application supports all available transactions in the Mpesa sandbox environment.
 
