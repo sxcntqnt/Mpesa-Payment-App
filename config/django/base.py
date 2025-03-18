@@ -18,7 +18,6 @@ from kombu import Exchange, Queue
 
 from PAYMENT_SYSTEM.env import BASE_DIR ,env
 
-env.read_env(os.path.join(BASE_DIR, '.env'))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -59,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'PAYMENT_SYSTEM.urls'
 
 TEMPLATES = [
     {
@@ -77,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'PAYMENT_SYSTEM.wsgi.application'
 
 
 # Database

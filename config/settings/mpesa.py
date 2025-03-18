@@ -1,6 +1,5 @@
-from config.env import env
+from PAYMENT_SYSTEM.env import BASE_DIR ,env
 
-
-Consumer Key = env('CONSUMER_KEY')
-Consumer Secret = env('CONSUMER_SECRET')
+ConsumerKey = env('CONSUMER_KEY')
+ConsumerSecret = env('CONSUMER_SECRET')
 Shortcode = env('SHORTCODE')
