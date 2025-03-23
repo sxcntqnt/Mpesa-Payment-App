@@ -2,6 +2,7 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography import x509
 from base64 import b64encode
 import requests
+from PAYMENT_SYSTEM.env import env
 # To authenticate your app and get an OAuth access token, use this code.
 # An access token expires in 3600 seconds or 1 hour
 
@@ -10,8 +11,8 @@ from requests.auth import HTTPBasicAuth
 
 
 def authenticate(self, request, format=None):
-    consumer_key = "dJjjF6lieZzA62MRlGnd5YSnBBIxcAE1"
-    consumer_secret = "kJZcB2pDoulDOwOu"
+    consumer_key = env('CONSUMER_KEY')
+    consumer_secret = env('CONSUMER_SECRET')
     api_URL = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
 
     r = requests.get(api_URL, auth=HTTPBasicAuth(

@@ -31,7 +31,9 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DJANGO_DEBUG', default=True)
 
-ALLOWED_HOSTS = ['192.168.100.111','192.168.100.150']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+
+CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in env.list("ALLOWED_HOSTS", default=[])]
 
 
 # Application definition
@@ -197,3 +199,4 @@ CACHES = {
 
 from config.settings.celery import *
 from config.settings.mpesa import *
+from config.settings.cors import *

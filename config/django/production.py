@@ -1,10 +1,10 @@
 from .base import *
-from config.env import env
+from PAYMENT_SYSTEM.env import env
 
 # Security
 SECRET_KEY = env('DJANGO_SECRET_KEY')  # Must be set in environment or .env
 DEBUG = env.bool(DJANGO_DEBUG, default='False')
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['your-production-domain.com'])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 # Database connection pooling (for production)
 DATABASES['default'] = {

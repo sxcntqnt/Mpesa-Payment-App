@@ -1,9 +1,13 @@
 from .base import *
+from PAYMENT_SYSTEM.env import env
 
 # Security
 SECRET_KEY = env('DJANGO_SECRET_KEY', default='your-local-secret-key')  # Change to a secure value
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+
+# settings.py
+CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in env.list("ALLOWED_HOSTS", default=[])]
 
 # Database
 DATABASES['default'] = {

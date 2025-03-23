@@ -25,7 +25,7 @@ class CreateBToCTransaction(APIView):
 
     def post(self, request, format=None):
         # company to customer transaction based phone no and shortcode
-        access_token = authenticate()
+        access_token = utils.authenticate(self, request)
         try:
             try:
                 party_a = CompanyCodeOrNumber.objects.get(
@@ -86,7 +86,7 @@ class CreateBToBTransaction(APIView):
 
     def post(self, request, format=None):
         # company to company transaction based on short codes
-        access_token = authenticate()
+        access_token = utils.authenticate(self, request)
         try:
             try:
                 party_a = CompanyCodeOrNumber.objects.get(
@@ -153,7 +153,7 @@ class RegisterCToBUrl(APIView):
         # M-Pesa triggers a validation request against the validation URL.
         # The 3rd party system responds to M-Pesa with a validation response (either a success or an error code).
         # The response expected is the success code the 3rd party
-        access_token = authenticate()
+        access_token = utils.authenticate(self, request)
         try:
             try:
                 initiator_name = InitiatorName.objects.get(
@@ -188,7 +188,7 @@ class CheckAccountBalance(APIView):
 
     def post(self, request, format=None):
         # company to company transaction based on short codes
-        access_token = authenticate()
+        access_token = utils.authenticate(self, request)
         try:
             try:
                 party_a = CompanyCodeOrNumber.objects.get(
@@ -231,7 +231,7 @@ class CheckTransactionStatus(APIView):
 
     def post(self, request, format=None):
         # company to company transaction based on short codes
-        access_token = authenticate()
+        access_token = utils.authenticate(self, request)
         try:
             try:
                 party_a = CompanyCodeOrNumber.objects.get(
@@ -285,7 +285,7 @@ class TransactionReversal(APIView):
 
     def post(self, request, format=None):
         # company to customer transaction based phone no and shortcode
-        access_token = authenticate()
+        access_token = utils.authenticate(self, request)
         try:
             try:
                 party_a = CompanyCodeOrNumber.objects.get(
@@ -342,7 +342,7 @@ class InitiateLipaNaMpesaTransaction(APIView):
         # Lipa na M-Pesa Online Payment API is
         # used to initiate a M-Pesa transaction
         # on behalf of a customer using STK Push
-        access_token = authenticate()
+        access_token = utils.authenticate(self, request)
         try:
             try:
                 party_a = CompanyCodeOrNumber.objects.get(
@@ -401,7 +401,7 @@ class QueryLipaNaMpesaOnlineTransactionStatus(APIView):
         # Lipa na M-Pesa Online Payment API is
         # used to initiate a M-Pesa transaction
         # on behalf of a customer using STK Push
-        access_token = authenticate()
+        access_token = utils.authenticate(self, request)
         try:
             try:
                 transaction_response = TransactionResponse.objects.get(
